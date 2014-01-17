@@ -2,7 +2,7 @@ Title: ubuntu的简单配置
 Date: 2014-1-15
 Modified: 2014-1-15
 Tags: linux
-Slug: setup ubuntu
+Slug: setup-ubuntu
 
 接触ubuntu不过两个月，之前装了一个试玩，熟练之后越发的喜欢了，准备把工作环境迁移过来。不过之前只给了ubuntu 30g的磁盘空间，明显不够用，而且gnome3各种反人类，昨天心血来潮把原来的系统删了，扩了一下磁盘，重装。今天重新配置，顺便写在这里，后面方便查阅。
 
@@ -37,15 +37,18 @@ ubuntu似乎内置了iBus输入法，把语言支持弄好就可以用了，但�
 
 首先把iBus卸载了
 
+    :::bash
 	$ sudo apt-get remove ibus
 
 接着在`sources.list`添加源
 
+    :::bash
 	deb http://ppa.launchpad.net/fcitx-team/nightly/ubuntu quantal main 
 	deb-src http://ppa.launchpad.net/fcitx-team/nightly/ubuntu quantal main 
 
 在终端中，输入
 
+    :::bash
 	sudo apt-get update
 	sudo apt-get install fcitx fcitx-config-gtk fcitx-sunpinyin fcitx-googlepinyin fcitx-module-cloudpinyin  fcitx-sogoupinyin
 
@@ -55,4 +58,8 @@ ubuntu似乎内置了iBus输入法，把语言支持弄好就可以用了，但�
 
 这篇博客就是用搜狗写的，很舒服，不枉一番折腾。
 
+
+#编辑器——vim
+
+另外写了一个帖子，在[这里]({filename}../linux/setupvim.md)。
 
