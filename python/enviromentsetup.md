@@ -2,7 +2,7 @@ Title: ubuntu下python虚拟环境的配置问题
 Date: 2014-1-15
 Modified: 2014-1-15
 Tags: python
-Slug: python_enviroment
+Slug: python_enviroment_setup
 
 昨天重做了一下系统，今天配置的时候有些新收获，写在这里。
 
@@ -23,12 +23,12 @@ Canopy采用了虚拟环境，所以并不影响系统本身的python环境，�
     :::bash
 	/usr/lib/python2.7
 
-下面，Canopy默认情况下则把环境装在了
+而Canopy默认情况下则把环境装在了
 
     :::bash
 	/home/Enthought/Canopy
 
-下，两者没有什么关联。
+两者没有什么关联。
 
 而之前提到的将Canopy设置为系统默认python环境，则是Canopy在`~/.bashrc`文件最后加了一句
 
@@ -41,7 +41,7 @@ Canopy采用了虚拟环境，所以并不影响系统本身的python环境，�
 
 #python的虚拟环境
 
-我在重新配置pelican的时候注意到文档里面推荐把它装到一个虚拟环境里去。实际上推荐每一个新项目都放在独立的虚拟环境中，这样互不干扰最好。
+我在重新配置pelican的时候注意到文档里面推荐把它装到一个虚拟环境里去。实际上推荐每一个新项目都放在独立的虚拟环境中，这样互不干扰最好。此外如果没有`root`权限，使用虚拟环境也是一个不错的方案。
 
 做法其实也很简单，主要用到[virtualenv](http://www.virtualenv.org/)这个包，可以装到系统的python环境中
 
@@ -67,4 +67,17 @@ Canopy采用了虚拟环境，所以并不影响系统本身的python环境，�
     :::bash
 	$source bin/activate
 
-这这样做的结果就是把你的`$PATH`指到了当前的虚拟环境里，后面可以像正常的用法那样使用python了。结束的时候用命令`deactivate`就又把路径指回去了。
+这这样做的结果实际上是修改了环境变量，从而将虚拟环境下的python解释器设为默认的，并且随后再安装其他的包也自动放到了虚拟环境下，后面就可以像正常的用法那样使用python了。
+
+具体的实现方法可以参考`/bin/activate`脚本的内容。
+
+如果想取消刚才的更改，可以
+
+    :::bash
+    $deactivate
+
+###额外的东西
+
+参考`activate`脚本的内容，实际上可以自己手动更改环境变量得到同样的结果，但不建议这么做————除非你清楚自己在干什么。用`virtualenv`是一种省事且安全的做法。
+
+但是，关于`activate`和`deactivate`等这些看似完美的设定也有[争议](https://gist.github.com/datagrok/2199506)，有兴趣的可以参考一下。
