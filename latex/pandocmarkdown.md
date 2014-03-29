@@ -26,7 +26,7 @@ Slug: pandoc_markdown_pdf
 
 当然可以！我写这篇文章就是为了这个。
 
-其实很长一段时间里我是能不碰latex-pdf就不碰的，倒是把markdown当成日常标准每天都在用。很难说是谁联系上的谁，但当我看到pandoc的时候我明白了，整个生态链的最后一环找到了，此后便是神器在手。
+其实很长一段时间里我是能不碰latex-pdf就不碰的，倒是把markdown当成日常标准每天都在用。很难说是谁先起的意，但当我看到pandoc的时候我明白了，整个生态链的最后一环找到了，此后便是神器在手。
 
 思路也很简单，先用markdown写文档，再用pandoc转换输出成pdf，兼顾markdown的清新易用和latex的强大支持。
 
@@ -59,11 +59,11 @@ ubuntu下面可以直接sudo安装，如果需要beamer的支持，请参考[这
     :::bash
     /usr/share/pandoc-1.10.1/data/templates/default.latex
 
-我这里有一份[修改过的模板](https://gist.github.com/yangsan/9686706)，如果不嫌弃的话可以拿去用。为了能正常使用，请确认自己texlive安装正确，并且字体也搞定了。`\setCJKmainfont`那一项上我用了微软雅黑，如果你没装的话就换一个。
+我这里有一份[修改过的模板](https://gist.github.com/yangsan/9686706)，如果不嫌弃的话可以拿去用。为了能正常使用，请确认自己texlive安装正确，并且字体也没问题。`\setCJKmainfont`那一项上我用了微软雅黑，如果你没装的话就换一个。
 
 ##命令
 
-以上的所有配置完成以后就可以使用了，将markdown转换成pdf的命令如下：
+终于大功告成，将markdown转换成pdf的命令如下：
 
     :::bash
     pandoc hello.md --latex-engine xelatex -o hello.pdf
